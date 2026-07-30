@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salesforce Security Observatory | FortMilo Lab</title>
+  <meta name="description" content="A detailed guide to the Salesforce Security Observatory: Overview, Findings, SBS and Evidence, Admin controls, architecture and security boundaries.">
+  <link rel="icon" type="image/webp" href="https://fortmilo.co.uk/assets/fortmilo-logo.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://fortmilo.co.uk/" aria-label="FortMilo Lab home"><img class="brand-logo" src="https://fortmilo.co.uk/assets/fortmilo-logo.webp" alt="FortMilo Lab"></a>
+      <nav aria-label="Observatory pages">
+        <a aria-current="page" href="index.html">Overview</a>
+        <a href="findings.html">Findings</a>
+        <a href="evidence.html">SBS &amp; Evidence</a>
+        <a href="admin.html">Admin</a>
+        <a href="architecture.html">Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Salesforce Security Observatory</p>
+          <h1>A security cockpit, not an evidence dump.</h1>
+          <p class="lead">The Observatory organises read-only Salesforce security evidence by operator intent: first establish whether the scan is trustworthy, then prioritise findings, inspect supporting evidence and manage safe scan controls.</p>
+          <div class="actions">
+            <a class="button button-primary" href="findings.html">Explore the app sections</a>
+            <a class="button button-secondary" href="https://github.com/Fortmilo/security-observatory" target="_blank" rel="noopener">Public repository</a>
+          </div>
+        </div>
+
+        <div class="app-window" aria-label="Illustrative Observatory Overview tab">
+          <div class="window-title"><span>Overview cockpit</span><span>Illustrative</span></div>
+          <div class="trust-strip">
+            <span><b>Scan status</b>Completed</span>
+            <span><b>Evidence</b>Usable with caveats</span>
+            <span><b>Org type</b>Sandbox</span>
+            <span><b>Mode</b>Read-only</span>
+          </div>
+          <div class="app-tabs"><span class="active">Overview</span><span>Findings</span><span>SBS &amp; Evidence</span><span>Admin</span></div>
+          <div class="metric-grid">
+            <article class="metric metric-primary"><small>Primary review</small><strong>OAuth grants requiring review</strong><p>Identify users and applications retaining OAuth authorisations, including associations with inactive or frozen users.</p></article>
+            <article class="metric"><small>Second</small><strong>External Client Apps</strong><p>Inventory and principal context where safely available.</p></article>
+            <article class="metric"><small>Third</small><strong>Credentials</strong><p>Named and External Credential evidence.</p></article>
+            <article class="metric"><small>Fourth</small><strong>External surfaces</strong><p>Sites, guest and endpoint evidence.</p></article>
+            <article class="metric"><small>Supporting</small><strong>Privileged Access Evidence</strong><p>High-risk assignment context.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Application structure</p>
+          <h2>Four primary operator sessions</h2>
+          <p>The public guide follows the same intent-based structure as the application rather than presenting every scanner in one long page.</p>
+        </div>
+        <div class="card-grid card-grid-four">
+          <article class="card"><h3>Overview</h3><p>Trust strip, OAuth-first decision cockpit, evidence visibility caveats and prioritised supporting signals.</p><a class="card-link" href="index.html">Current page →</a></article>
+          <article class="card"><h3>Findings</h3><p>Filterable triage, safe finding drawers, assignment context, verification paths and advisory review state.</p><a class="card-link" href="findings.html">Open Findings →</a></article>
+          <article class="card"><h3>SBS &amp; Evidence</h3><p>Scanner usability, SBS mapping, coverage states, supporting Health Check evidence, comparison and safe export.</p><a class="card-link" href="evidence.html">Open SBS &amp; Evidence →</a></article>
+          <article class="card"><h3>Admin</h3><p>Evidence levels, one complete scan plan, retention, scheduled scans, stale-lock recovery and SBS registry controls.</p><a class="card-link" href="admin.html">Open Admin →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container split">
+        <div><p class="section-label">Overview hierarchy</p><h2>OAuth-first by design</h2></div>
+        <div class="prose">
+          <p>The Overview leads with <strong>OAuth grants requiring review</strong>. It does not describe a retained authorisation record as a live or usable credential, and it never tests a token by attempting to use it.</p>
+          <div class="detail-list">
+            <div class="detail-row"><strong>Primary</strong><span>OAuth grants retained by users and applications, including bounded inactive or frozen-user correlation where evidence exists.</span></div>
+            <div class="detail-row"><strong>Supporting order</strong><span>External Client App inventory, Named and External Credentials, Sites and externally exposed endpoints, then Privileged Access Evidence.</span></div>
+            <div class="detail-row"><strong>Demoted native evidence</strong><span>Health Check, package and licence evidence remain available under SBS &amp; Evidence instead of dominating the Overview.</span></div>
+            <div class="detail-row"><strong>Truthful gaps</strong><span>Unavailable evidence renders as “Not assessed — reason” with the unavailable evidence and a safe next action.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-accent">
+      <div class="container split">
+        <div><p class="section-label">Current status</p><h2>Built and validated privately; public release still curated</h2></div>
+        <div class="prose">
+          <p>The private implementation contains the application and its validation history. This public repository is a sanitised documentation, validation and contribution surface, not a mirror of private source or Git history.</p>
+          <p>A generally available managed package or AppExchange listing is not claimed here. Installation remains sandbox-first while the public release path is completed.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><p><strong>FortMilo Lab</strong> — independent Salesforce security engineering.</p><p><a href="https://fortmilo.co.uk/">fortmilo.co.uk</a> · <a href="mailto:info@fortmilo.co.uk">info@fortmilo.co.uk</a></p></div><div><p>Read-only, advisory and evidence-focused. No compliance or security certification claim.</p><p>© 2026 Luca Pacini trading as FortMilo Lab.</p></div></div></footer>
+</body>
+</html>
